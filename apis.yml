@@ -1,8 +1,28 @@
 aid: mina-protocol
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mina-protocol.png
 name: Mina Protocol
-description: 'Mina Protocol is a company surfaced as a portfolio company of multicoin-capital and added
-  to the API Evangelist network as a stub for enrichment. Sector: crypto-web3. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Mina Protocol is a lightweight, layer-1 blockchain powered by zero-knowledge
+  proofs (zk-SNARKs) that maintains a constant ~22KB chain size regardless of
+  usage, using the Ouroboros Samasika proof-of-stake consensus. Developers build
+  privacy-preserving smart contracts called zkApps in TypeScript with the o1js
+  framework, sign transactions with mina-signer, scaffold and deploy projects
+  with the zkApp CLI, and integrate with the network through the Mina daemon's
+  native GraphQL API and a first-party Coinbase Rosetta API implementation for
+  exchanges and data indexing. Originally surfaced as a portfolio company of
+  Multicoin Capital and enriched here from Mina's public developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/mina-protocol/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +32,80 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Crypto Web3
-apis: []
+- Blockchain
+- Zero Knowledge Proofs
+- zk-SNARKs
+- Smart Contracts
+- GraphQL
+- Rosetta API
+- Developer Tools
+apis:
+- name: Mina GraphQL API
+  description: >-
+    Native GraphQL API served by the Mina daemon (default port 3085) to query
+    blockchain data — accounts, blocks, transactions, pending pool, daemon
+    status — and submit signed transactions including zkApp commands.
+  humanURL: https://docs.minaprotocol.com/node-operators/validator-node/querying-data
+  properties:
+  - type: Documentation
+    url: https://docs.minaprotocol.com/node-operators/validator-node/querying-data
+  - type: Conventions
+    url: conventions/mina-protocol-conventions.yml
+- name: Mina Rosetta API
+  description: >-
+    First-party implementation of the Coinbase Rosetta API (Data API +
+    Construction API) for blockchain integration, historical data queries, and
+    exchange support.
+  humanURL: https://docs.minaprotocol.com/node-operators/data-and-history/rosetta
+  properties:
+  - type: Documentation
+    url: https://docs.minaprotocol.com/node-operators/data-and-history/rosetta
+  - type: Conformance
+    url: conformance/mina-protocol-conformance.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/mina-protocol-domain-security.yml
 - type: Website
   url: https://minaprotocol.com
+- type: DeveloperPortal
+  url: https://docs.minaprotocol.com
+- type: Documentation
+  url: https://docs.minaprotocol.com
+- type: APIReference
+  url: https://docs.minaprotocol.com/node-operators/validator-node/querying-data
+- type: GettingStarted
+  url: https://docs.minaprotocol.com/zkapps/writing-a-zkapp/introduction-to-zkapps/getting-started-zkapps
+- type: GitHubOrganization
+  url: https://github.com/MinaProtocol
+- type: ChangeLog
+  url: changelog/mina-protocol-changelog.yml
+- type: Packages
+  url: packages/mina-protocol-packages.yml
+- type: SDKs
+  url: packages/mina-protocol-packages.yml
+- type: CLI
+  url: cli/mina-protocol-cli.yml
+- type: Sandbox
+  url: sandbox/mina-protocol-sandbox.yml
+- type: Conventions
+  url: conventions/mina-protocol-conventions.yml
+- type: Authentication
+  url: authentication/mina-protocol-authentication.yml
+- type: Conformance
+  url: conformance/mina-protocol-conformance.yml
+- type: LLMsTxt
+  url: llms/mina-protocol-llms.txt
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1

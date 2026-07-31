@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.minaprotocol.com/zkapps/writing-a-zkapp/introduction-to-zkapps/install-zkapp-cli
+name: zkApp CLI (zk)
+package: zkapp-cli
+binaries: [zk, zkapp, zkapp-cli]
+install:
+  - method: npm
+    command: npm install -g zkapp-cli
+docs: https://docs.minaprotocol.com/zkapps/writing-a-zkapp/introduction-to-zkapps/install-zkapp-cli
+repository: https://github.com/o1-labs/zkapp-cli
+description: >-
+  First-party command-line tool for zkApp developers. Scaffolds a new zkApp
+  project (smart contract + optional UI), configures deployment aliases,
+  requests test funds, and deploys the compiled zkApp to a Mina network.
+command_groups:
+  - group: project
+    purpose: Create and manage a zkApp project
+    commands: [project, example, file, config]
+  - group: build_test
+    purpose: Compile and test zk smart contracts
+    commands: [build, test]
+  - group: deploy
+    purpose: Deploy a zkApp to a Mina network
+    commands: [deploy]
+  - group: utility
+    purpose: Lightnet management and system info
+    commands: [lightnet, system]
+notes: >-
+  There is also a Rosetta offline signer CLI used by node/exchange operators for
+  key generation and transaction signing (see mina-signer docs). Node operation
+  itself is driven by the `mina` daemon binary, not this SDK CLI.

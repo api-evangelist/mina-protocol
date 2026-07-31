@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/MinaProtocol/mina/releases
+scheme: >-
+  Release-tagged daemon versions plus named network upgrades (hard forks). The
+  authoritative dated changelog is the GitHub Releases feed of the mina
+  repository; network-era changes are documented under docs Network Upgrades.
+release_notes_url: https://github.com/MinaProtocol/mina/releases
+network_upgrades:
+  - name: Berkeley
+    highlight: >-
+      Transition to the Berkeley proof system with zkApp (smart contract)
+      support.
+    docs: https://docs.minaprotocol.com/network-upgrades/berkeley
+  - name: Mesa
+    highlight: >-
+      Expanded zkApp state, automode upgrades, and protocol improvements
+      (current/most recent mainnet hard fork).
+    docs: https://docs.minaprotocol.com/network-upgrades/mesa
+note: >-
+  Recent-window pointer only; the live GitHub Releases feed is the source of
+  truth for per-version dated entries.

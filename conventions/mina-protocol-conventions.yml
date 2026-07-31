@@ -1,0 +1,57 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.minaprotocol.com/node-operators/validator-node/querying-data
+description: >-
+  Cross-cutting integration semantics for the two programmatic surfaces a Mina
+  node exposes: the native GraphQL API and the Rosetta API implementation.
+  Mina is a self-hosted blockchain protocol — there is no hosted commercial API
+  gateway, so these conventions describe how developers interact with a node
+  they run (or a community/exchange node).
+apis:
+  - name: GraphQL API
+    style: graphql
+    default_endpoint: http://localhost:3085/graphql
+    port: 3085
+    config_flag: --rest-port
+    schema: Introspection-enabled (query the node's GraphQL schema directly)
+    capabilities:
+      - Query blockchain data (accounts, blocks, transactions, pending pool, daemon status)
+      - Submit signed transactions (payments, delegations, zkApp commands)
+    docs: https://docs.minaprotocol.com/node-operators/validator-node/querying-data
+  - name: Rosetta API
+    style: rest
+    standard: Coinbase Rosetta API (Data API + Construction API)
+    transport: JSON over HTTP (curl-friendly)
+    capabilities:
+      - Data API — scan blocks, track deposits, inspect transactions/balances
+      - Construction API — build, sign (offline), and submit MINA transfers
+    docs: https://docs.minaprotocol.com/node-operators/data-and-history/rosetta
+authentication:
+  model: signature-based
+  detail: >-
+    Neither the GraphQL nor Rosetta endpoint uses API keys or OAuth. State
+    changes are authorized by cryptographic signatures over transactions,
+    produced client-side with mina-signer / o1js / the Rosetta offline signer.
+    Read endpoints are unauthenticated and typically bound to localhost or
+    firewalled by the operator.
+idempotency:
+  supported: false
+  detail: >-
+    No idempotency-key contract. Transaction uniqueness/replay protection is
+    handled at the protocol layer via per-account nonces; a resubmitted signed
+    transaction with the same nonce is rejected by consensus, not by an API key.
+pagination:
+  graphql: Cursor/limit arguments on collection queries per the node schema.
+  rosetta: Block-height / block-identifier paging per the Rosetta Data API.
+versioning:
+  scheme: network-upgrade (hard fork) + daemon release version
+  detail: >-
+    Compatibility is pinned to the network era (e.g. Berkeley, Mesa) and the
+    daemon/SDK release; there is no URL/date API version. See lifecycle.
+error_handling:
+  graphql: Standard GraphQL `errors[]` array in the response body.
+  rosetta: Rosetta typed error objects (code, message, retriable) per the standard.
+cross_links:
+  authentication: authentication/mina-protocol-authentication.yml
+  conformance: conformance/mina-protocol-conformance.yml
+  lifecycle: changelog/mina-protocol-changelog.yml

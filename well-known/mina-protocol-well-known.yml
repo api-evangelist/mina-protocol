@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: live probe 2026-07-20
+hosts:
+  - host: https://minaprotocol.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://docs.minaprotocol.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 200
+        file: ../llms/mina-protocol-llms.txt
+        note: Not under /.well-known/ but a live agent-discovery document.
+summary: >-
+  No /.well-known/ discovery documents are published on either host. The docs
+  host does publish a top-level /llms.txt (captured separately). Absence of
+  well-known documents is valid, expected data for a self-hosted blockchain
+  protocol with no hosted OAuth/OIDC surface.

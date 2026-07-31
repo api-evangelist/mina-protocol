@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.minaprotocol.com/mina-signer
+summary:
+  types: [signature]
+  api_key: false
+  oauth2: false
+  detail: >-
+    Mina's node APIs (GraphQL, Rosetta) are not gated by API keys or OAuth.
+    Authorization for any state-changing operation is a cryptographic signature
+    over the transaction, using a Mina key pair (public + private key).
+schemes:
+  - name: transaction-signature
+    type: signature
+    algorithm: Schnorr signatures over the Pallas curve (Mina native)
+    produced_by:
+      - mina-signer (npm, o1-labs)
+      - o1js (npm, o1-labs)
+      - Rosetta offline signer CLI
+    docs: https://docs.minaprotocol.com/mina-signer
+  - name: node-endpoint-access
+    type: network
+    detail: >-
+      GraphQL/Rosetta read endpoints are unauthenticated and bound to
+      localhost:3085 (or an operator-firewalled host) by default; access control
+      is a deployment concern for the node operator, not an API credential.
+notes: >-
+  No OpenAPI securitySchemes exist in-repo to derive from; this profile is
+  searched from the provider docs. Key generation and signing are entirely
+  client-side.

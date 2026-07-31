@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.minaprotocol.com/node-operators/data-and-history/rosetta
+standards:
+  - id: rosetta-api
+    conforms: true
+    evidence: >-
+      Mina ships a first-party implementation of the Coinbase Rosetta API
+      (Data API + Construction API) for blockchain integration, historical data
+      queries, and exchange support.
+    docs: https://docs.minaprotocol.com/node-operators/data-and-history/rosetta
+  - id: graphql
+    conforms: true
+    evidence: The Mina daemon exposes a native GraphQL API (introspection-enabled) on port 3085.
+    docs: https://docs.minaprotocol.com/node-operators/validator-node/querying-data
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth surface; authorization is signature-based.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      GraphQL uses the standard errors[] envelope and Rosetta uses its own typed
+      error objects; neither uses application/problem+json.
+note: >-
+  These are cross-cutting API/standards conformance assertions, not a published
+  security/compliance certification program (SOC 2 / ISO 27001 / etc.), so no
+  Compliance pointer is emitted.

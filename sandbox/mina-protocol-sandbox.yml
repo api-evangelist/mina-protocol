@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.minaprotocol.com/zkapps/writing-a-zkapp/introduction-to-zkapps/testing-zkapps-lightnet
+description: >-
+  Mina provides three tiers of non-production testing for zkApp and node
+  developers: a fully local single-node network (Lightnet), a public test
+  network (Devnet) funded by a faucet, and the Mesa preflight testing network
+  for upcoming hard-fork validation.
+environments:
+  - name: Lightnet
+    kind: local-blockchain
+    purpose: >-
+      Lightweight local Mina blockchain for testing zkApps against a real node
+      before deploying to a live network. Managed via the zkApp CLI.
+    launch: zk lightnet start
+    docs: https://docs.minaprotocol.com/zkapps/writing-a-zkapp/introduction-to-zkapps/testing-zkapps-lightnet
+  - name: Devnet
+    kind: public-testnet
+    purpose: Public Mina test network for deploying and exercising zkApps with no real value at stake.
+    funding: Faucet (request test MINA)
+    docs: https://docs.minaprotocol.com/zkapps/writing-a-zkapp/introduction-to-zkapps/how-to-deploy-a-zkapp
+  - name: Mesa Preflight Network
+    kind: preflight-testnet
+    purpose: >-
+      Version-matched preflight network for validating node/archive/Rosetta
+      setups against the Mesa hard fork before mainnet.
+    docs: https://docs.minaprotocol.com/network-upgrades/mesa/preflight-setup
+test_facilities:
+  - name: Faucet
+    purpose: Request test MINA to fund a zkApp account or key on Devnet.
+    docs: https://docs.minaprotocol.com/zkapps/writing-a-zkapp/introduction-to-zkapps/how-to-deploy-a-zkapp
+notes: >-
+  No published static test-key values or magic identifiers — funds are requested
+  from the live faucet and keys are generated locally with mina-signer / the
+  daemon. No test values are invented here.

@@ -54,6 +54,8 @@ tags:
 - GraphQL
 - Rosetta API
 - Developer Tools
+- Web3
+- Cryptocurrency
 tags_raw:
 - Company
 - Crypto Web3
@@ -64,6 +66,8 @@ tags_raw:
 - GraphQL
 - Rosetta API
 - Developer Tools
+- Web3
+- Cryptocurrency
 apis:
 - name: Mina GraphQL API
   description: >-
